@@ -3,6 +3,7 @@ import sys
 import argparse
 from termcolor import colored
 
+
 parser = argparse.ArgumentParser(description='Escaner de puertos')
 parser.add_argument('-i', '--ip', required=True, help='Debes introducir una IP.')
 parser = parser.parse_args()
@@ -15,11 +16,8 @@ def main():
             resultado = s.connect_ex((parser.ip, port))
             if resultado == 0:
                 print (colored(f'El puerto {port} está abierto.', 'blue'))
+            
                 
-        
-        s.close()
-
-
 
 if __name__=='__main__':
     try:
