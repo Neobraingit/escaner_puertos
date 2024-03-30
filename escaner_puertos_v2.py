@@ -12,7 +12,7 @@ def main():
     if parser.ip:
         for port in range(1, 65535):
             s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-            socket.setdefaulttimeout(1)
+            socket.setdefaulttimeout(0.1)
             resultado = s.connect_ex((parser.ip, port))
             if resultado == 0:
                 print (colored(f'El puerto {port} está abierto.', 'blue'))
