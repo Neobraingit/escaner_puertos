@@ -4,7 +4,7 @@ import argparse
 from termcolor import colored
 
 parser = argparse.ArgumentParser(description='Escaner de puertos')
-parser.add_argument('-i', '--ip', required=True)
+parser.add_argument('-i', '--ip', required=True, help='Debes introducir una IP.')
 parser = parser.parse_args()
 
 def main():
@@ -18,8 +18,6 @@ def main():
                 
         
         s.close()
-
-
 
 
 
