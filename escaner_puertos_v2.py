@@ -3,14 +3,19 @@ import sys
 import argparse
 from termcolor import colored
 
+parser = argparse.ArgumentParser(description='Escaner de puertos')
+parser.add_argument('-i', '--ip', required=True)
+parser = parser.parse_args()
+
 def main():
-    objetivo = input('Introduce la IP a escanear: ')
-    for port in range(1, 65535):
-        s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        socket.setdefaulttimeout(1)
-        resultado = s.connect_ex((objetivo, port))
-        if resultado == 0:
-            print (colored(f'El puerto {port} está abierto.', 'blue'))
+    if parser.ip:
+        for port in range(1, 65535):
+            s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+            socket.setdefaulttimeout(1)
+            resultado = s.connect_ex((parser.ip, port))
+            if resultado == 0:
+                print (colored(f'El puerto {port} está abierto.', 'blue'))
+                
         
         s.close()
 
